@@ -1,0 +1,18 @@
+Origem	Voos
+TAP Portugal	30
+Air Europa	2
+Iberia	3
+Transavia France	4
+Ryanair	28
+EasyJet Airlines	12
+Sata Internacional	1
+Lufthansa	3
+Brussels Airlines	1
+VY	2
+Turkish Airlines	1
+HOP!	1
+ZI	1
+Evelop Airlines	1
+Luxair	1
+TAAG	1
+Swiss International	2

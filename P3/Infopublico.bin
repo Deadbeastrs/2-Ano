@@ -1,0 +1,95 @@
+Hora	Voo	Companhia	Origem	Atraso
+0:50	TP 1944	TAP Portugal	Lisboa	0:0
+7:0	AEA1147	Air Europa	Madrid	0:0
+7:35	IB 8720	Iberia	Madrid	0:25
+7:35	TO 3408	Transavia France	Paris, Orly	0:0
+7:40	FR 5451	Ryanair	Faro	0:0
+7:55	EZY3771	EasyJet Airlines	Paris, Ch. de Gaulle	0:33
+8:5	TP 459	TAP Portugal	Paris, Orly	0:13
+8:15	FR 1386	Ryanair	Brussels, Charleroi	0:0
+8:20	FR 4171	Ryanair	Frankfurt, Hahn	0:0
+8:30	S4 370	Sata Internacional	Toronto, Pearson	0:35
+8:45	TP 080	TAP Portugal	São Paulo, Guarulhos	0:0
+8:50	FR 2094	Ryanair	Lisboa	0:0
+9:0	TP 1718	TAP Portugal	Madeira	0:0
+9:15	TP 1922	TAP Portugal	Lisboa	0:0
+9:35	FR 5482	Ryanair	Madrid	0:0
+9:40	TP 1003	TAP Portugal	Madrid	0:34
+9:50	EZY1989	EasyJet Airlines	Manchester	0:28
+10:5	TP 1926	TAP Portugal	Lisboa	0:0
+10:55	FR 4585	Ryanair	Barcelona	0:0
+11:10	LH 1176	Lufthansa	Frankfurt	0:3
+11:25	TP 451	TAP Portugal	Paris, Orly	0:16
+11:30	EZY1451	EasyJet Airlines	Geneva	0:0
+11:35	FR 9134	Ryanair	Paris, Beauvais	0:24
+11:40	TP 1924	TAP Portugal	Lisboa	0:0
+11:45	IB 8726	Iberia	Madrid	0:0
+11:50	FR 8343	Ryanair	London, Stansted	0:31
+12:5	SN 3811	Brussels Airlines	Brussels	0:0
+12:15	FR 4702	Ryanair	Milan/Bergamo	0:0
+12:40	EZY1131	EasyJet Airlines	Basel	0:48
+12:40	TO 3409	Transavia France	Madeira	0:29
+13:0	TP 1031	TAP Portugal	Barcelona	0:0
+13:10	VY 8962	VY	Brussels	0:47
+13:30	FR 1671	Ryanair	Lisboa	0:0
+14:0	TO 3410	Transavia France	Paris, Orly	0:29
+14:5	VY 1985	VY	Paris, Orly	0:5
+14:10	TP 331	TAP Portugal	London, Gatwick	0:23
+14:10	TP 851	TAP Portugal	Rome, Fiumicino	0:0
+14:20	TK 1449	Turkish Airlines	Istanbul, Ataturk	0:0
+14:25	EZY2097	EasyJet Airlines	London, Luton	0:0
+14:35	EZS1133	EasyJet Airlines	Basel	0:33
+14:35	TP 1930	TAP Portugal	Lisboa	0:32
+14:50	FR 7473	Ryanair	Eindhoven	0:10
+14:55	FR 7228	Ryanair	Valencia	0:0
+15:0	TP 939	TAP Portugal	Geneva	0:0
+15:10	TP 823	TAP Portugal	Milan, Malpensa	0:0
+15:15	EZY8497	EasyJet Airlines	London, Gatwick	0:0
+15:20	FR 2928	Ryanair	Brussels	0:0
+15:20	LH 1178	Lufthansa	Frankfurt	0:0
+15:35	AEA1143	Air Europa	Madrid	0:0
+15:40	TP 603	TAP Portugal	Brussels	0:0
+15:45	FR 2632	Ryanair	Ponta Delgada	0:20
+15:50	TP 1932	TAP Portugal	Lisboa	0:0
+15:50	TP 453	TAP Portugal	Paris, Orly	0:0
+16:10	A5 9740	HOP!	Clermont-Ferrand	0:0
+16:30	FR 4565	Ryanair	Paris, Vatry	0:0
+16:30	FR 7716	Ryanair	Carcassonne	0:4
+16:30	IB 8722	Iberia	Madrid	0:0
+16:40	FR 7467	Ryanair	Saint Etienne	0:43
+17:0	EZY4445	EasyJet Airlines	Lyon, St. Exupery	0:0
+17:10	EZY1747	EasyJet Airlines	Toulouse, Blagnac	0:0
+17:30	ZI 315	ZI	Paris, Orly	0:0
+17:50	TP 1934	TAP Portugal	Lisboa	0:16
+18:10	TP 917	TAP Portugal	Zurich	0:0
+18:15	FR 6295	Ryanair	Clermont-Ferrand	0:0
+18:35	EVE5704	Evelop Airlines	Palma Mallorca	0:0
+18:35	LG 3767	Luxair	Luxembourg	0:0
+18:45	DT 654	TAAG	Luanda	0:10
+18:45	LX 2064	Swiss International	Zurich	0:0
+18:50	EZS1455	EasyJet Airlines	Geneva	0:0
+19:5	TO 3411	Transavia France	Madeira	0:0
+19:30	TP 1005	TAP Portugal	Madrid	0:41
+19:35	LX 2078	Swiss International	Geneva	0:0
+19:35	TP 1033	TAP Portugal	Barcelona	0:0
+19:45	FR 5429	Ryanair	Tenerife Sur	0:12
+20:0	FR 5484	Ryanair	Madrid	0:0
+20:40	FR 2096	Ryanair	Lisboa	0:0
+20:55	FR 6531	Ryanair	Marseille	0:30
+20:55	TP 651	TAP Portugal	Amsterdam	0:0
+21:0	TP 457	TAP Portugal	Paris, Orly	0:0
+21:25	FR 5487	Ryanair	Faro	0:0
+21:45	TP 679	TAP Portugal	Luxembourg	0:0
+21:45	TP 943	TAP Portugal	Geneva	0:0
+21:50	TP 1938	TAP Portugal	Lisboa	0:22
+22:5	TP 821	TAP Portugal	Milan, Malpensa	0:44
+22:10	FR 4503	Ryanair	Lille	0:21
+22:10	TP 1710	TAP Portugal	Madeira	0:0
+22:25	EZY3775	EasyJet Airlines	Paris, Ch. de Gaulle	0:9
+22:35	FR 9205	Ryanair	Hamburg	0:0
+22:35	LH 1180	Lufthansa	Frankfurt	0:0
+22:40	FR 4599	Ryanair	Memmingen	0:0
+22:40	TP 347	TAP Portugal	London, Gatwick	0:0
+22:45	EZY1457	EasyJet Airlines	Geneva	0:0
+22:55	FR 7475	Ryanair	Paris, Beauvais	0:0
+23:20	FR 8347	Ryanair	London, Stansted	0:0

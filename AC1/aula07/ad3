@@ -1,0 +1,41 @@
+	.data
+arr:	.word 5,4,4,2,6,3,5,7
+dump:	.space 32
+	.text
+	.globl main
+main:	addiu $sp,$sp,-4
+	sw $ra,0($sp)
+	la $a0,arr
+	la $a1,dump
+	li $a2,8
+	jal find_duplicates
+	lw $ra,0($sp)
+	addiu $sp,$sp,4
+	jr $ra
+
+find_duplicates:
+	li $t0,0 # i
+	li $t2,0 # token
+f1:	bge $t0,$a2,eF1
+	sll $t3,$t0,2
+	add $t3,$a1,$t3 # dum_array + i
+	sw $0,0($t3)
+	li $t1,0 # j
+	li $t2,1
+f2:	bge $t1,$a2,eF2
+	sll $t5,$t0,2 # i * 4
+	add $t5,$t5,$a0 # i * 4 + array
+	lw $t6,0($t5) # array[i]
+	sll $t4,$t1,2 # j*4
+	add $t4,$t4,$a0 # j * 4 + array
+	lw $t7,0($t4) # array[j]
+	bne $t6,$t7,eIf
+	sll $t8,$t1,2
+	add $t8,$t8,$a1
+	sw $t2,0($t8)
+	addi $t2,$t2,1
+eIf:	addi $t1,$t1,1
+	j f2
+eF2:	addi $t0,$t0,1
+	j f1
+eF1:	jr $ra	

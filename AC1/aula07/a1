@@ -1,0 +1,69 @@
+	.data
+str1:	.asciiz "Hello"
+	.space 6
+str2:	.asciiz "teste"
+	.text
+	.globl main
+main:	addiu $sp,$sp,-4
+	sw $ra,0($sp)
+	la $a0,str1
+	la $a1,str2
+	li $a2,1
+	jal insert
+	move $a0,$v0
+	li $v0,4
+	syscall
+	lw $ra,0($sp)
+	addiu $sp,$sp,4
+	jr $ra
+	
+insert:	addiu $sp,$sp,-16
+	sw $ra,0($sp)
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	move $s0,$a0 # *dst
+	move $s1,$a1 # *src
+	move $s2,$a2 # pos
+	move $a0,$s0
+	jal strlen
+	move $t6,$v0 # len_dst
+	move $a0,$s1
+	jal strlen
+	move $t7,$v0 # len_src
+	bgt $s2,$t6,Eif
+	move $t5,$t6
+F1:	blt $t5,$s2,Ef1
+	add $t1,$s0,$t5 # dst + i	
+	add $t2,$t7,$t1 #  dst + i + len_src
+	lb $t3,0($t1)
+	sb $t3,0($t2)
+	addiu $t5,$t5,-1
+	j F1
+Ef1:	move $t5,$0
+F2:	bge $t5,$t7,Eif
+	add $t0,$s0,$t5 # dst + i
+	add $t0,$t0,$s2 # dst + i + pos
+	add $t1,$s1,$t5 # src + i
+	lb $t2,0($t1)
+	sb $t2,0($t0)
+	addiu $t5,$t5,1
+	j F2
+Eif:	move $v0,$s0
+	lw $ra,0($sp)
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	addiu $sp,$sp,16
+	jr $ra
+	
+strlen:	li $t0,0 #len
+while:	lb $t1,0($a0)
+	addiu $a0,$a0,1
+	beq $t1,'\0',endW
+	addiu $t0,$t0,1
+	j while
+endW:	move $v0,$t0
+	jr $ra
+	
+	

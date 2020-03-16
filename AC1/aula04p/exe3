@@ -1,0 +1,20 @@
+	.data
+arr:	.word 7692,23,5,234
+	.eqv SIZE,4
+	.text
+	.globl main
+main:	la $t0,arr   #$t0 -> p
+	la $t1,arr   #$t1 -> pultimo
+	addiu $t1,$t1,12
+	li $t2,0     #soma -> 0
+while:	bgt $t0,$t1,endW
+	lw $t3,0($t0)   #$t3 -> *p
+	add $t2,$t2,$t3
+	addiu $t0,$t0,4
+	j while
+endW:	li $v0,1
+	move $a0,$t2
+	syscall
+	jr $ra
+	
+	

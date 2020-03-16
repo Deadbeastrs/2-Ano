@@ -1,0 +1,18 @@
+	.data
+num:	.space 20
+str:	.asciiz "\nIntroduza um numero: "
+	.eqv SIZE,5
+	.text
+	.globl main
+main:	la $t0,num   # $t0 -> lista&
+	li $t1,0   # $t1 -> i
+	move $t3,$t0
+for:	bge $t1,SIZE,endF
+	li $v0,5
+	syscall
+	sw $v0,0($t3)
+	addiu $t1,$t1,1
+	sll $t2,$t1,2
+	add $t3,$t0,$t2
+	j for
+endF:

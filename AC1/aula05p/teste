@@ -1,0 +1,47 @@
+	.data
+	.eqv SIZE,30
+str1:	.asciiz "Dinheiro"
+str3:	.asciiz "\n"
+str2:	.space 31
+	.align 2
+	.text
+	.globl main
+main:	addiu $sp,$sp,-4
+	sw $ra,0($sp)
+	la $a0,str1
+	jal strlen
+	move $s1,$v0
+	bge $s1,SIZE,eIf1
+	la $a0,str2
+	la $a1,str1
+	jal strcpy
+	li $v0,4
+	la $a0,str2
+	syscall
+	la $a0,str3
+	syscall
+eIf1:	lw $ra,0($sp)
+	addiu $sp,$sp,4
+	jr $ra
+	
+
+strcpy:	li $t0,0 # li
+	j do1
+do:	addiu $t0,$t0,1 # i++
+do1:	move $t3,$a0
+	move $t4,$a1
+	addu $t4,$t4,$t0 # &src[i]
+	addu $t3,$t3,$t0 # &dst[i]
+	lb $t2,0($t4) # src[i)
+	sb $t2,0($t3) # dst[i] = src[i]
+	bne $t2,'\0',do	
+	jr $ra
+	
+strlen:	li $t0,0 #len
+while:	lb $t1,0($a0)
+	addiu $a0,$a0,1
+	beq $t1,'\0',endW
+	addiu $t0,$t0,1
+	j while
+endW:	move $v0,$t0
+	jr $ra

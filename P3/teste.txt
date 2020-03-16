@@ -1,0 +1,5 @@
+Jogador Clube/equipa    Posicao
+flie    Leiria  Defesa
+safd    WOCO    Avançado
+port    Sporting    Médio
+iurt    Benfica Médio

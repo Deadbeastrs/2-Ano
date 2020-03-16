@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon Nov 25 10:56:06 2019
+Quartus Prime Version : 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+Revision Name : aula08
+Top-level Entity Name : MIPS_SingleCycle
+Family : Cyclone IV E
+Total logic elements : 1,240
+    Total combinational functions : 891
+    Dedicated logic registers : 524
+Total registers : 524
+Total pins : 79
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

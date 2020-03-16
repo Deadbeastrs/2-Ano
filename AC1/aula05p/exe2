@@ -1,0 +1,22 @@
+	.data
+arr:	.word 8,-4,3,5,124,-15,87,9,27,15
+str:	.asciiz "\nConteudo do array:\n"
+str1:	.asciiz "; "
+	.text
+	.globl main
+main:	li $v0,4
+	la $t0,arr  # p->$t0
+	addiu $t1,$t0,40  # p + size ->$t1
+	la $a0,str
+	syscall
+for:	bge $t0,$t1,endF
+	li $v0,1
+	lw $t2,0($t0)   #$t2 -> *p
+	move $a0,$t2
+	syscall
+	li $v0,4
+	la $a0,str1
+	addiu $t0,$t0,4
+	syscall
+	j for
+endF:	jr $ra

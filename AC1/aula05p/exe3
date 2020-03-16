@@ -1,0 +1,28 @@
+	.data
+arr:	.word 10,90,42,234,253,53,64,34,53,23
+	.eqv SIZE,10
+	.eqv TRUE,1
+	.eqv FALSE,0
+	.text
+	.globl main
+main:	li $t3,0	# $t3 -> i
+	la $t0,arr
+do:	li $t2,FALSE  # houveTroca -> $t2
+	li $t3,0
+for:	bge $t3,9,endF
+	sll $t4,$t3,2	#$t4 -> i+4
+	add $t5,$t4,$t0 # $t5 -> &lista + i
+	lw $t6,0($t5)   # $t6 -> lista[i]
+	lw $t7,4($t5)	# $t7 -> lista[i+1]
+	ble $t6,$t7,endIf
+	move $t1,$t6	# $t1 -> aux
+	sw $t7,0($t5)
+	sw $t1,4($t5)
+	li $t2,TRUE
+endIf:	addiu $t3,$t3,1
+	j for
+endF:	beq $t2,TRUE,do
+	jr $ra
+	
+	
+	
