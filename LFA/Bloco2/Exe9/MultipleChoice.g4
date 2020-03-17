@@ -2,15 +2,13 @@ grammar MultipleChoice;
 
 program: lines* EOF;
 
-lines: line? NEWLINE;
+lines: question? NEWLINE;
 
-line:ID '(' STRING ')' '{' #lineQuestion
-    | answers               #lineAnswer 
-    | '}'                   #lineEnd
+question:ID '(' STRING ')' '{\n' answers+ '}'
     ;
-answers: '  ' STRING ':' Value ';' ; // para aqui
+answers: '  ' STRING ':' Value ';\n' ; 
 
-Value : [0-9]+; // Isto é bugado não da para passar para onde diz answers o ;
+Value : [0-9]+; 
 ID : [a-zA-Z0-9.]+;
 STRING: '"' (ESC | .)*? '"';
 fragment ESC: '\\"' | '\\\\'; 

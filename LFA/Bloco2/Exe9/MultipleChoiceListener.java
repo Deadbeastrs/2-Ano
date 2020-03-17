@@ -27,41 +27,15 @@ public interface MultipleChoiceListener extends ParseTreeListener {
 	 */
 	void exitLines(MultipleChoiceParser.LinesContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code lineQuestion}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
+	 * Enter a parse tree produced by {@link MultipleChoiceParser#question}.
 	 * @param ctx the parse tree
 	 */
-	void enterLineQuestion(MultipleChoiceParser.LineQuestionContext ctx);
+	void enterQuestion(MultipleChoiceParser.QuestionContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code lineQuestion}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
+	 * Exit a parse tree produced by {@link MultipleChoiceParser#question}.
 	 * @param ctx the parse tree
 	 */
-	void exitLineQuestion(MultipleChoiceParser.LineQuestionContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code lineAnswer}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
-	 * @param ctx the parse tree
-	 */
-	void enterLineAnswer(MultipleChoiceParser.LineAnswerContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code lineAnswer}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
-	 * @param ctx the parse tree
-	 */
-	void exitLineAnswer(MultipleChoiceParser.LineAnswerContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code lineEnd}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
-	 * @param ctx the parse tree
-	 */
-	void enterLineEnd(MultipleChoiceParser.LineEndContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code lineEnd}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
-	 * @param ctx the parse tree
-	 */
-	void exitLineEnd(MultipleChoiceParser.LineEndContext ctx);
+	void exitQuestion(MultipleChoiceParser.QuestionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link MultipleChoiceParser#answers}.
 	 * @param ctx the parse tree

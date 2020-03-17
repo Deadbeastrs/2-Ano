@@ -22,26 +22,11 @@ public interface MultipleChoiceVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLines(MultipleChoiceParser.LinesContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code lineQuestion}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
+	 * Visit a parse tree produced by {@link MultipleChoiceParser#question}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitLineQuestion(MultipleChoiceParser.LineQuestionContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code lineAnswer}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLineAnswer(MultipleChoiceParser.LineAnswerContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code lineEnd}
-	 * labeled alternative in {@link MultipleChoiceParser#line}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLineEnd(MultipleChoiceParser.LineEndContext ctx);
+	T visitQuestion(MultipleChoiceParser.QuestionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link MultipleChoiceParser#answers}.
 	 * @param ctx the parse tree

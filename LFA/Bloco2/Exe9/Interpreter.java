@@ -11,21 +11,13 @@ public class Interpreter extends MultipleChoiceBaseVisitor<String> {
    }
 
    @Override public String visitLines(MultipleChoiceParser.LinesContext ctx) {
-      visit(ctx.line());
+      visit(ctx.question());
       return null;
    }
 
-   @Override public String visitLineQuestion(MultipleChoiceParser.LineQuestionContext ctx) {
+   @Override public String visitQuestion(MultipleChoiceParser.QuestionContext ctx) {
       q = new Questions(ctx.STRING().getText(),ctx.ID().getText());
-      return null;
-   }
-
-   @Override public String visitLineAnswer(MultipleChoiceParser.LineAnswerContext ctx) {
-      visit(ctx.answers());
-      return null;
-   }
-
-   @Override public String visitLineEnd(MultipleChoiceParser.LineEndContext ctx) {
+      ctx.answers().stream().forEach(s -> visit(s));
       mem.add(q);
       return null;
    }

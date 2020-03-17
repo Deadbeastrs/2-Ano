@@ -39,37 +39,13 @@ public class MultipleChoiceBaseListener implements MultipleChoiceListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLineQuestion(MultipleChoiceParser.LineQuestionContext ctx) { }
+	@Override public void enterQuestion(MultipleChoiceParser.QuestionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLineQuestion(MultipleChoiceParser.LineQuestionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLineAnswer(MultipleChoiceParser.LineAnswerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLineAnswer(MultipleChoiceParser.LineAnswerContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterLineEnd(MultipleChoiceParser.LineEndContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitLineEnd(MultipleChoiceParser.LineEndContext ctx) { }
+	@Override public void exitQuestion(MultipleChoiceParser.QuestionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
