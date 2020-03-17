@@ -31,9 +31,9 @@ public class Interpreter extends MultipleChoiceBaseVisitor<String> {
    }
 
    @Override public String visitAnswers(MultipleChoiceParser.AnswersContext ctx) {
-      if(ctx.Value().getText().equals("100;")){ //Este ; é bugado
+      if(ctx.Value().getText().equals("100")){ //Este ; é bugado
          q.addCorrect(ctx.STRING().getText());
-      }else if(ctx.Value().getText().equals("0;")){
+      }else if(ctx.Value().getText().equals("0")){
          q.addWrong(ctx.STRING().getText());
       }
       return null;

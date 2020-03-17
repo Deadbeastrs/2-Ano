@@ -16,8 +16,8 @@ public class MultipleChoiceParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, ID=6, STRING=7, Value=8, NEWLINE=9, 
-		WS=10, COMMENT=11;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, Value=8, ID=9, 
+		STRING=10, NEWLINE=11, WS=12, COMMENT=13;
 	public static final int
 		RULE_program = 0, RULE_lines = 1, RULE_line = 2, RULE_answers = 3;
 	private static String[] makeRuleNames() {
@@ -29,14 +29,14 @@ public class MultipleChoiceParser extends Parser {
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'('", "') {'", "'}'", "'  '", "':'"
+			null, "'('", "')'", "'{'", "'}'", "'  '", "':'", "';'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, "ID", "STRING", "Value", "NEWLINE", 
-			"WS", "COMMENT"
+			null, null, null, null, null, null, null, null, "Value", "ID", "STRING", 
+			"NEWLINE", "WS", "COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -127,7 +127,7 @@ public class MultipleChoiceParser extends Parser {
 			setState(11);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__3) | (1L << ID) | (1L << NEWLINE))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << ID) | (1L << NEWLINE))) != 0)) {
 				{
 				{
 				setState(8);
@@ -187,7 +187,7 @@ public class MultipleChoiceParser extends Parser {
 			setState(17);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__2) | (1L << T__3) | (1L << ID))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__3) | (1L << T__4) | (1L << ID))) != 0)) {
 				{
 				setState(16);
 				line();
@@ -278,7 +278,7 @@ public class MultipleChoiceParser extends Parser {
 		LineContext _localctx = new LineContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_line);
 		try {
-			setState(27);
+			setState(28);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case ID:
@@ -293,22 +293,24 @@ public class MultipleChoiceParser extends Parser {
 				match(STRING);
 				setState(24);
 				match(T__1);
+				setState(25);
+				match(T__2);
 				}
 				break;
-			case T__3:
+			case T__4:
 				_localctx = new LineAnswerContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(25);
+				setState(26);
 				answers();
 				}
 				break;
-			case T__2:
+			case T__3:
 				_localctx = new LineEndContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(26);
-				match(T__2);
+				setState(27);
+				match(T__3);
 				}
 				break;
 			default:
@@ -354,14 +356,16 @@ public class MultipleChoiceParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(29);
-			match(T__3);
 			setState(30);
-			match(STRING);
-			setState(31);
 			match(T__4);
+			setState(31);
+			match(STRING);
 			setState(32);
+			match(T__5);
+			setState(33);
 			match(Value);
+			setState(34);
+			match(T__6);
 			}
 		}
 		catch (RecognitionException re) {
@@ -376,16 +380,17 @@ public class MultipleChoiceParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\r%\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\3\2\7\2\f\n\2\f\2\16\2\17\13\2\3\2\3\2\3\3\5\3\24\n"+
-		"\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\5\4\36\n\4\3\5\3\5\3\5\3\5\3\5\3\5"+
-		"\2\2\6\2\4\6\b\2\2\2$\2\r\3\2\2\2\4\23\3\2\2\2\6\35\3\2\2\2\b\37\3\2\2"+
-		"\2\n\f\5\4\3\2\13\n\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2\2\r\16\3\2\2\2\16"+
-		"\20\3\2\2\2\17\r\3\2\2\2\20\21\7\2\2\3\21\3\3\2\2\2\22\24\5\6\4\2\23\22"+
-		"\3\2\2\2\23\24\3\2\2\2\24\25\3\2\2\2\25\26\7\13\2\2\26\5\3\2\2\2\27\30"+
-		"\7\b\2\2\30\31\7\3\2\2\31\32\7\t\2\2\32\36\7\4\2\2\33\36\5\b\5\2\34\36"+
-		"\7\5\2\2\35\27\3\2\2\2\35\33\3\2\2\2\35\34\3\2\2\2\36\7\3\2\2\2\37 \7"+
-		"\6\2\2 !\7\t\2\2!\"\7\7\2\2\"#\7\n\2\2#\t\3\2\2\2\5\r\23\35";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\17\'\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\3\2\7\2\f\n\2\f\2\16\2\17\13\2\3\2\3\2\3\3\5\3\24"+
+		"\n\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\37\n\4\3\5\3\5\3\5\3\5\3"+
+		"\5\3\5\3\5\2\2\6\2\4\6\b\2\2\2&\2\r\3\2\2\2\4\23\3\2\2\2\6\36\3\2\2\2"+
+		"\b \3\2\2\2\n\f\5\4\3\2\13\n\3\2\2\2\f\17\3\2\2\2\r\13\3\2\2\2\r\16\3"+
+		"\2\2\2\16\20\3\2\2\2\17\r\3\2\2\2\20\21\7\2\2\3\21\3\3\2\2\2\22\24\5\6"+
+		"\4\2\23\22\3\2\2\2\23\24\3\2\2\2\24\25\3\2\2\2\25\26\7\r\2\2\26\5\3\2"+
+		"\2\2\27\30\7\13\2\2\30\31\7\3\2\2\31\32\7\f\2\2\32\33\7\4\2\2\33\37\7"+
+		"\5\2\2\34\37\5\b\5\2\35\37\7\6\2\2\36\27\3\2\2\2\36\34\3\2\2\2\36\35\3"+
+		"\2\2\2\37\7\3\2\2\2 !\7\7\2\2!\"\7\f\2\2\"#\7\b\2\2#$\7\n\2\2$%\7\t\2"+
+		"\2%\t\3\2\2\2\5\r\23\36";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

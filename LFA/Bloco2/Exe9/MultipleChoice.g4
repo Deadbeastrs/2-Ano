@@ -4,18 +4,16 @@ program: lines* EOF;
 
 lines: line? NEWLINE;
 
-line: ID '(' STRING ') {' #lineQuestion
-    | answers          #lineAnswer
-    | '}'             #lineEnd
+line:ID '(' STRING ')' '{' #lineQuestion
+    | answers               #lineAnswer 
+    | '}'                   #lineEnd
     ;
+answers: '  ' STRING ':' Value ';' ; // para aqui
 
-answers: '  ' STRING ':' Value ;
-
-
+Value : [0-9]+; // Isto é bugado não da para passar para onde diz answers o ;
 ID : [a-zA-Z0-9.]+;
 STRING: '"' (ESC | .)*? '"';
 fragment ESC: '\\"' | '\\\\'; 
-Value : [0-9]+ ';'; // Isto é bugado não da para passar para onde diz answers o ;
 NEWLINE : '\r'? '\n';
 WS : [ \t]+ -> skip ; 
 COMMENT :'\n'? '#' .*? '\n' -> skip; 
