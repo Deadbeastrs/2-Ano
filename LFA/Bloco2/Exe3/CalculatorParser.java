@@ -16,8 +16,8 @@ public class CalculatorParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, ID=8, Number=9, 
-		NEWLINE=10, WS=11, COMMENT=12;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, Number=8, NEWLINE=9, 
+		WS=10, COMMENT=11;
 	public static final int
 		RULE_program = 0, RULE_stat = 1, RULE_expr = 2;
 	private static String[] makeRuleNames() {
@@ -35,7 +35,7 @@ public class CalculatorParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, null, null, null, "ID", "Number", "NEWLINE", 
+			null, null, null, null, null, null, null, null, "Number", "NEWLINE", 
 			"WS", "COMMENT"
 		};
 	}
@@ -481,15 +481,15 @@ public class CalculatorParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16+\4\2\t\2\4\3\t"+
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\r+\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\3\2\7\2\n\n\2\f\2\16\2\r\13\2\3\2\3\2\3\3\5\3\22\n\3\3\3\3"+
 		"\3\3\4\3\4\3\4\3\4\3\4\3\4\3\4\3\4\5\4\36\n\4\3\4\3\4\3\4\3\4\3\4\3\4"+
 		"\7\4&\n\4\f\4\16\4)\13\4\3\4\2\3\6\5\2\4\6\2\4\3\2\3\4\3\2\5\7\2-\2\13"+
 		"\3\2\2\2\4\21\3\2\2\2\6\35\3\2\2\2\b\n\5\4\3\2\t\b\3\2\2\2\n\r\3\2\2\2"+
 		"\13\t\3\2\2\2\13\f\3\2\2\2\f\16\3\2\2\2\r\13\3\2\2\2\16\17\7\2\2\3\17"+
 		"\3\3\2\2\2\20\22\5\6\4\2\21\20\3\2\2\2\21\22\3\2\2\2\22\23\3\2\2\2\23"+
-		"\24\7\f\2\2\24\5\3\2\2\2\25\26\b\4\1\2\26\27\t\2\2\2\27\36\5\6\4\7\30"+
-		"\36\7\13\2\2\31\32\7\b\2\2\32\33\5\6\4\2\33\34\7\t\2\2\34\36\3\2\2\2\35"+
+		"\24\7\13\2\2\24\5\3\2\2\2\25\26\b\4\1\2\26\27\t\2\2\2\27\36\5\6\4\7\30"+
+		"\36\7\n\2\2\31\32\7\b\2\2\32\33\5\6\4\2\33\34\7\t\2\2\34\36\3\2\2\2\35"+
 		"\25\3\2\2\2\35\30\3\2\2\2\35\31\3\2\2\2\36\'\3\2\2\2\37 \f\6\2\2 !\t\3"+
 		"\2\2!&\5\6\4\7\"#\f\5\2\2#$\t\2\2\2$&\5\6\4\6%\37\3\2\2\2%\"\3\2\2\2&"+
 		")\3\2\2\2\'%\3\2\2\2\'(\3\2\2\2(\7\3\2\2\2)\'\3\2\2\2\7\13\21\35%\'";
