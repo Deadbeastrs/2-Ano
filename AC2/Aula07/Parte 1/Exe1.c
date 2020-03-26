@@ -3,7 +3,7 @@
 
 int main(void){
     T3CONbits.TCKPS = 7;//Prescaler
-    PR3 = 39063;        //PRT3
+    PR3 = 39062;        //PRT3
     TMR3 = 0;           //Reset ao timer
     T3CONbits.TON = 1;  //Ligar o timer
     while(1){
