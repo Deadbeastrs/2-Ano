@@ -15,7 +15,7 @@ void _int_(12) isr_T3(void){
 
 int main(void){
     T3CONbits.TCKPS = 5;//Prescaler T3
-    T1CONbits.TCKPS = 3;//Prescaler T1
+    T1CONbits.TCKPS = 7;//Prescaler T1
     //PR3 = 62500;        //PRT3 a 10hz
     PR3 = 31250;        //PRT3 a 20hz
     PR1 = 39063;        //PRT1
