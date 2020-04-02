@@ -6,8 +6,8 @@ void setPWM(int dutyCycle){
 }
 
 int main(void){
-    T3CONbits.TCKPS = 5;//Prescaler T3
-    PR3 = 6249;        //PRT3 a 100hz
+    T3CONbits.TCKPS = 2;//Prescaler T3
+    PR3 = 49999;        //PRT3 a 100hz
     TMR3 = 0;           //Reset ao timer T3
     IFS0bits.T3IF = 0;  //Reset a flag de interrupção T3
     T3CONbits.TON = 1;  //Ligar o timer T3
