@@ -61,9 +61,9 @@ int main(void){
     TRISBbits.TRISB6 = 0;
     while(1){
         while(U1STAbits.TRMT == 1);
-        LATBbits.LATB5 = 1;
+        LATBbits.LATB6 = 1;
         puts("12345\n");
-        LATBbits.LATB5 = 0;
+        LATBbits.LATB6 = 0;
     }
     //U1TX
     //U1RX
