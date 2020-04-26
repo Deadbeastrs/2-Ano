@@ -6,7 +6,7 @@
 #define DisableUart1TxInterrupt() IEC0bits.U1TXIE = 0
 #define EnableUart1TxInterrupt() IEC0bits.U1TXIE = 1
 #define INDEX_MASK (BUF_SIZE - 1)
-#define BUF_SIZE 32 
+#define BUF_SIZE 8 
 
 typedef struct{
     unsigned char data[BUF_SIZE];
@@ -94,7 +94,7 @@ void comDrv_config(unsigned int baud, char parity, unsigned int stopbits){
     U1STAbits.UTXSEL = 0;
     IPC6bits.U1IP = 5;
     IEC0bits.U1TXIE = 1;
-    IEC0bits.U1RXIE = 1; //MUDAR%
+    IEC0bits.U1RXIE = 1;
     IFS0bits.U1RXIF = 0;
     IFS0bits.U1TXIF = 0;
 
@@ -123,19 +123,16 @@ int main(void){
     comDrv_flushRx();
     comDrv_flushTx();
     EnableInterrupts();
-    /*int c = 's';
-    comDrv_puts("PIC32 UART Device-driver\n");
-    int boolean = 0;
-    while(1){
-        if(comDrv_getc(&c)){
-            comDrv_putc(c);
-        }
-    }*/
-    int s = 0;
-    while(s<10){
-        comDrv_puts("UMA FRASE QUE OCUPE OS 32 BITS DO BUFFER DE TX OU SEJA DE ENTRADA\n");
-        s++;
+    //char c = 's';
+    //comDrv_puts("PIC32 UART Device-driver\n");
+    //int boolean = 0;
+    int p = 0;
+    while(U1STAbits.TRMT == 0){};
+    while(p<10){
+        comDrv_puts("TESTE12345678\n");
+        p++;
     }
+    putChar('\n');
     printInt10(c);
     return 0;
 }

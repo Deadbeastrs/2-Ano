@@ -6,7 +6,7 @@
 #define DisableUart1TxInterrupt() IEC0btis.U1TXIE = 0
 #define EnableUart1TxInterrupt() IEC0btis.U1TXIE = 1
 #define INDEX_MASK (BUF_SIZE – 1)
-#define BUF_SIZE 32 
+#define BUF_SIZE 8
 
 typedef struct{
     unsigned char data[BUF_SIZE];

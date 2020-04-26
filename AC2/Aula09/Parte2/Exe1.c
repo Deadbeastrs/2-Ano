@@ -6,8 +6,8 @@
 #define DisableUart1TxInterrupt() IEC0bits.U1TXIE = 0
 #define EnableUart1TxInterrupt() IEC0bits.U1TXIE = 1
 #define INDEX_MASK (BUF_SIZE - 1)
-#define BUF_SIZE 32 
-
+#define BUF_SIZE 8 
+//MNEOS QUE 8 UMA interrupção   
 typedef struct{
     unsigned char data[BUF_SIZE];
     unsigned int head;
@@ -18,10 +18,10 @@ typedef struct{
 volatile circularBuffer txb;
 volatile circularBuffer rxb;
 volatile int c = 0;
+volatile int d = 0;
 
 void _int_(24) isr_uart1(void){
     if(IFS0bits.U1TXIF == 1){
-        c++;
         if(txb.count > 0){
             while((U1STAbits.UTXBF == 0) && (txb.count > 0)){
                 U1TXREG = txb.data[txb.head];
@@ -35,13 +35,16 @@ void _int_(24) isr_uart1(void){
         IFS0bits.U1TXIF = 0;
     }
     if(IFS0bits.U1RXIF == 1){
-        rxb.data[rxb.tail] = U1RXREG;
-        rxb.tail = (rxb.tail + 1) & INDEX_MASK;
-        if(rxb.count < BUF_SIZE){
-            rxb.count++;
-        }else{
-            rxb.head++;
+        while(rxb.count < BUF_SIZE){
+            if(U1STAbits.URXDA == 1){
+                rxb.data[rxb.tail] = U1RXREG;
+                rxb.tail = (rxb.tail + 1) & INDEX_MASK;
+                if(rxb.count < BUF_SIZE){
+                    rxb.count++;
+                }
+            }
         }
+        rxb.head++;
         IFS0bits.U1RXIF = 0;
     }   
 }
@@ -63,26 +66,34 @@ char comDrv_getc(char *pchar){
         return 0;
     }
     DisableUart1RxInterrupt();
-    *pchar = rxb.data[rxb.head];
-    rxb.count = rxb.count - 1;
-    rxb.head = (rxb.head + 1) & INDEX_MASK;
+    while(rxb.count > 0){
+        *pchar = rxb.data[rxb.head];
+        rxb.count = rxb.count - 1;
+        rxb.head = (rxb.head + 1) & INDEX_MASK;
+    }
     EnableUart1RxInterrupt();
     return 1;
 }
 
 void comDrv_putc(char ch){
-    while(txb.count == BUF_SIZE){}
-    txb.data[txb.tail] = ch;
-    txb.tail = (txb.tail + 1) & INDEX_MASK;
-    DisableUart1TxInterrupt();
-    txb.count = txb.count + 1;
-    EnableUart1TxInterrupt();
+
+    //Nao havendo espaco e preciso enable interrupts
 }
 
 void comDrv_puts(char *s){
     while(1){
-        comDrv_putc(*s);
-        s++;
+        if((txb.count == 0)){
+            while(txb.count < BUF_SIZE){
+                txb.data[txb.tail] = *s;
+                txb.tail = (txb.tail + 1) & INDEX_MASK;
+                txb.count = txb.count + 1;
+                s++;
+                if(*s == '\0'){
+                    break;
+                }
+            }
+            EnableUart1TxInterrupt();
+        }
         if(*s == '\0'){
             break;
         }
@@ -95,7 +106,7 @@ void comDrv_config(unsigned int baud, char parity, unsigned int stopbits){
     U1STAbits.URXISEL = 0;
     U1STAbits.UTXSEL = 0;
     IPC6bits.U1IP = 2;
-    IEC0bits.U1TXIE = 1;
+    IEC0bits.U1TXIE = 0;
     IEC0bits.U1RXIE = 1; //MUDAR%
     IFS0bits.U1RXIF = 0;
     IFS0bits.U1TXIF = 0;
@@ -121,15 +132,17 @@ void comDrv_config(unsigned int baud, char parity, unsigned int stopbits){
 }
 
 int main(void){
+    int p = 0;
+    char k = '0';
     comDrv_config(115200,'N',1);
     comDrv_flushRx();
     comDrv_flushTx();
     EnableInterrupts();
-    int s = 0;
-    while(s<10){
-        comDrv_puts("TESTE\n");
-        s++;
+    while(U1STAbits.TRMT == 0){};
+    while(1){
+        if(comDrv_getc(&k)){
+            putChar('s');
+        }
     }
-    printInt10(c);
     return 0;
 }
