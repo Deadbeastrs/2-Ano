@@ -11,11 +11,15 @@ CFLAGS += -x c
 CFLAGS += -g -Wall
 CPPFLAGS = $(CFLAGS)
 
-TARGETS = PriorityQueueTest example1 example2 example3
+TARGETS = PriorityQueueTest example1 example2 example3 testGraphStack testGraphQueue
 
 all: $(TARGETS)
 
 PriorityQueueTest: PriorityQueueTest.o PriorityQueue.o
+
+testGraphStack: testGraphStack.o Graph.o SortedList.o GraphDFSWithStack.o IntegersStack.o
+
+testGraphQueue: testGraphQueue.o Graph.o SortedList.o GraphBFSWithQueue.o IntegersQueue.o IntegersStack.o
 
 example1: example1.o Graph.o SortedList.o
 
@@ -42,6 +46,10 @@ GraphDijkstra.o: GraphDijkstra.c GraphDijkstra.h Graph.h \
         IntegersStack.h PriorityQueue.h
 GraphShortestPathsWithQueue.o: GraphShortestPathsWithQueue.c \
         GraphShortestPathsWithQueue.h Graph.h IntegersStack.h IntegersQueue.h
+
+testGraphStack.o: testGraphStack.c Graph.h SortedList.h GraphDFSWithStack.h IntegersStack.h
+
+testGraphQueue.o: testGraphQueue.c Graph.h SortedList.h GraphBFSWithQueue.h IntegersQueue.h  IntegersStack.h
 
 Graph.o: Graph.c Graph.h SortedList.h
 

@@ -51,7 +51,6 @@ GraphDFSWithStack* GraphDFSWithStackExecute(Graph* g,
   traversal->marked[startVertex] = 1;
   while(!StackIsEmpty(s)){
     unsigned int v = StackPop(s);
-    printf("%d\n",v);
     unsigned int* neighbors = GraphGetAdjacentsTo(traversal->graph, v);
     for (int i = 1; i <= neighbors[0]; i++) {
       unsigned int w = neighbors[i];

@@ -24,14 +24,16 @@ int main(void) {
 
   GraphDisplay(g01);
 
-  Graph* g02 =GraphCopy(g01);
-
   FILE *fp;
-  fp = fopen("file.txt", "r");
-  Graph* g03 = GraphFromFile(*fp);
+  fp = fopen("Grafos/SWtinyEWD.txt", "r");
+  Graph* g03 = GraphFromFile(fp);
   fclose(fp);
 
   GraphDisplay(g03);
+
+  Graph* g02 =GraphCopy(g03);
+
+  GraphDisplay(g02);
 
   GraphBFSWithQueue* traversal = GraphBFSWithQueueExecute(g01, 0);
 

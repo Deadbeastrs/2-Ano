@@ -52,7 +52,7 @@ int graphEdgesComparator(const void* p1, const void* p2) {
   return (d > 0) - (d < 0);
 }
 
-Graph* GraphCreate(unsigned short numVertices, unsigned short isDigraph,
+Graph* GraphCreate(unsigned long numVertices, unsigned short isDigraph,
                    unsigned short isWeighted) {
   Graph* g = (Graph*)malloc(sizeof(struct _GraphHeader));
   if (g == NULL) abort();
@@ -158,32 +158,54 @@ Graph* GraphCopy(const Graph* g) {
   if(copy == NULL){
     return NULL;
   }
-  for(int i = 0; i < GraphGetNumVertices(g);i++){
-    unsigned int* neighbors = GraphGetAdjacentsTo(g,i);
-    for(int p = 1; p <= neighbors[0];p++){
-      GraphAddEdge(copy,i,neighbors[p]);
+  if(!GraphIsWeighted(g)){
+    for(int i = 0; i < GraphGetNumVertices(g);i++){
+      unsigned int* neighbors = GraphGetAdjacentsTo(g,i);
+      for(int p = 1; p <= neighbors[0];p++){
+        GraphAddEdge(copy,i,neighbors[p]);
+      }
+    }
+  }
+  if(GraphIsWeighted(g)){
+    for(int i = 0; i < GraphGetNumVertices(g);i++){
+      int* weights = GraphGetDistancesToAdjacents(g,i);
+      unsigned int* neighbors = GraphGetAdjacentsTo(g,i);
+      for(int p = 1; p <= neighbors[0];p++){
+        GraphAddWeightedEdge(copy,i,neighbors[p],weights[p]);
+      }
     }
   }
   return copy;
 }
 
-Graph* GraphFromFile(FILE f) {
-  /*
-  int vert = 999;
-  int arest = 999;
+Graph* GraphFromFile(FILE *f) {
+  int dig = 0;
+  int weight = 0;
+  fscanf(f, "%d", &dig);
+  fscanf(f, "%d", &weight);
+  unsigned int vert = 0;
+  unsigned int arest = 0;
   fscanf(f, "%d", &vert);
   fscanf(f, "%d", &arest);
-  Graph* g = GraphCreate(vert, 0, 0);
-  int i;
-  int v1;
-  int v2;
-  for(i=0;i<arest;i++){
-    fscanf(f, "%d %d", &v1, &v2);
-    GraphAddEdge(g, v1, v2);
+  Graph* g = GraphCreate(vert, dig, weight);
+  printf("----------------> %d\n",g->numVertices);
+  unsigned int i;
+  unsigned int v1;
+  unsigned int v2;
+  double weight1;
+  if((dig == 0 || dig == 1) && weight == 0){
+    for(i=0;i<arest;i++){
+      fscanf(f, "%d %d", &v1, &v2);
+      GraphAddEdge(g, v1, v2);
+    }
+  }
+  else if((dig == 0 || dig == 1) && weight == 1){
+    for(i=0;i<arest;i++){
+      fscanf(f, "%d %d %lf", &v1, &v2,&weight1);
+      GraphAddWeightedEdge(g, v1, v2,(weight1 * 1000));
+    }
   }
   return g;
-  */
- return NULL;
 }
 
 // Graph
@@ -401,7 +423,7 @@ unsigned short GraphAddWeightedEdge(Graph* g, unsigned int v, unsigned int w,
 // CHECKING
 
 unsigned short GraphCheckInvariants(const Graph* g) {
-  // COMPLETAR !!
+  
 
   return 0;
 }

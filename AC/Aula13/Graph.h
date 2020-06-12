@@ -12,7 +12,7 @@
 
 typedef struct _GraphHeader Graph;
 
-Graph* GraphCreate(unsigned short numVertices, unsigned short isDigraph,
+Graph* GraphCreate(unsigned long numVertices, unsigned short isDigraph,
                    unsigned short isWeighted);
 
 Graph* GraphCreateComplete(unsigned short numVertices,
@@ -22,7 +22,7 @@ void GraphDestroy(Graph** p);
 
 Graph* GraphCopy(const Graph* g);
 
-Graph* GraphFromFile(FILE f);
+Graph* GraphFromFile(FILE *f);
 
 // Graph
 
