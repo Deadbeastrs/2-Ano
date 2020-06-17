@@ -25,11 +25,13 @@ int main(void) {
   GraphDisplay(g01);
 
   FILE *fp;
-  fp = fopen("Grafos/SWtinyEWD.txt", "r");
+  fp = fopen("SWmediumEWD.txt", "r");
   Graph* g03 = GraphFromFile(fp);
   fclose(fp);
 
   GraphDisplay(g03);
+
+  GraphCheckInvariants(g03);
 
   Graph* g02 =GraphCopy(g03);
 

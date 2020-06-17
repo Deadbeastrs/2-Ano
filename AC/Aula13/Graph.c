@@ -188,7 +188,6 @@ Graph* GraphFromFile(FILE *f) {
   fscanf(f, "%d", &vert);
   fscanf(f, "%d", &arest);
   Graph* g = GraphCreate(vert, dig, weight);
-  printf("----------------> %d\n",g->numVertices);
   unsigned int i;
   unsigned int v1;
   unsigned int v2;
@@ -196,13 +195,17 @@ Graph* GraphFromFile(FILE *f) {
   if((dig == 0 || dig == 1) && weight == 0){
     for(i=0;i<arest;i++){
       fscanf(f, "%d %d", &v1, &v2);
-      GraphAddEdge(g, v1, v2);
+      if(v1 != v2){
+        GraphAddEdge(g, v1, v2);
+      }
     }
   }
   else if((dig == 0 || dig == 1) && weight == 1){
     for(i=0;i<arest;i++){
       fscanf(f, "%d %d %lf", &v1, &v2,&weight1);
-      GraphAddWeightedEdge(g, v1, v2,(weight1 * 1000));
+      if(v1 != v2){
+        GraphAddWeightedEdge(g, v1, v2,(weight1 * 100));
+      }
     }
   }
   return g;
@@ -423,9 +426,26 @@ unsigned short GraphAddWeightedEdge(Graph* g, unsigned int v, unsigned int w,
 // CHECKING
 
 unsigned short GraphCheckInvariants(const Graph* g) {
-  
-
-  return 0;
+  int i = 0;
+  if(g->isDigraph == 0){
+    int c = 0;
+    for(i=0; i < g->numVertices;i++){
+      c = c + GraphGetVertexDegree(g,i);
+    }
+    if(g->numEdges != c){
+      return 0;
+    }
+  }else{
+    int c = 0;
+    int d = 0;
+    for(i=0; i < g->numVertices;i++){
+      c = c + GraphGetVertexOutDegree(g,i);
+    }
+    if(g->numEdges != c){
+      return 0;
+    }
+  }
+  return 1;
 }
 
 // DISPLAYING on the console
