@@ -2,8 +2,8 @@ grammar Calculator;
 
 program: commands* EOF;
 
-commands: assign?   NEWLINE  #ComAssign
-        | equation? NEWLINE  #ComEquation
+commands: assign?     #ComAssign
+        | equation?   #ComEquation
         ;
 
 
